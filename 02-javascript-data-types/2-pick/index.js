@@ -6,14 +6,16 @@
  */
 export const pick = (obj, ...fields) => {
 
-  let newFields = Object.keys(obj).filter(key => fields.includes(key));
+  const newFields = Object.keys(obj).filter(key => fields.includes(key));
+
+  const newObj = {};
 
   Object.keys(obj)
     .forEach(key => {
-      if (!newFields.includes(key)) {
-        delete obj[key];
+      if (newFields.includes(key)) {
+        newObj[key] = key;
       }
     });
 
-  return obj;
+  return newObj;
 };
