@@ -7,28 +7,11 @@
 export function sortStrings(arr, param = 'asc') {
 
   let newArr = arr.slice();
+  newArr.sort((a, b) => a.localeCompare(b, ['ru-Ru', 'en-En'], {sensitivity: 'variant', caseFirst: 'upper'}));
 
   if (param === 'desc') {
-    return newArr
-      .sort((a, b) => compareIncludeRegister(a, b))
-      .reverse();
+    return newArr.reverse();
   }
 
-  return newArr.sort((a, b) => compareIncludeRegister(a, b));
-}
-
-function compareIncludeRegister(word1, word2) {
-  if (isDifferentWordsJustFirsLetter(word1, word2)) {
-    if (word1.charAt(0) === word2.charAt(0).toUpperCase()) {
-      return -1;
-    } else {
-      return 1;
-    }
-  }
-
-  return word1.localeCompare(word2, "ru");
-}
-
-function isDifferentWordsJustFirsLetter(word1, word2) {
-  return (word1.toUpperCase() === word2.toUpperCase()) && (word1.charAt(0) !== word2.charAt(0));
+  return newArr;
 }
