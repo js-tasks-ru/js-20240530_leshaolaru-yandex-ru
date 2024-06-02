@@ -6,7 +6,7 @@
 export function invertObj(obj) {
 
   if (obj === undefined || obj === null) {
-    return undefined;
+    return;
   }
 
   const newObj = {};
