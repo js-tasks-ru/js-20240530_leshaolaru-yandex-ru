@@ -13,5 +13,3 @@ export function invertObj(obj) {
   Object.keys(obj).forEach(key => newObj[obj[key]] = key);
   return newObj;
 }
-
-console.log(invertObj());
